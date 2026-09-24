@@ -5,8 +5,11 @@ import { Separator } from '@base-ui/react'
 import WordmarkFooter from '@/components/ruixen/wordmark-footer'
 import { motion } from 'motion/react'
 import { scrollToHash } from '@/lib/utils'
+import { useTheme } from 'next-themes'
 
 export default function Footer() {
+    const { theme } = useTheme()
+
     return (
         <motion.div
             className="w-full h-fit px-8 space-y-7 bg-background"
@@ -18,11 +21,16 @@ export default function Footer() {
             <div className="flex md:flex-row flex-col gap-4 items-center justify-between">
                 <div className="flex flex-col justify-center items-start gap-2 w-full">
                     <a className="rounded-md" href="#home">
-                        <span className="flex items-center justify-center min-w-fit">
-                            <h1 className="text-2xl font-bold text-primary">
-                                Level up
-                            </h1>
-                            <p className="text-2xl font-bold text-chart-3">.</p>
+                        <span className="flex items-center justify-center min-w-fit gap-0.5">
+                            <img
+                                src={
+                                    theme === 'dark'
+                                        ? '/dark.svg'
+                                        : '/light.svg'
+                                }
+                                alt="Skill Trade"
+                                className="w-20"
+                            />
                         </span>
                     </a>
                     <p className="text-muted-foreground max-w-70">
@@ -46,9 +54,9 @@ export default function Footer() {
             </div>
             <Separator className="w-full h-px bg-border" />
             <p className="text-center">
-                &copy; 2026 Level Up Inc. All rights reserved.
+                &copy; 2026 Skill Trade Inc. All rights reserved.
             </p>
-            <WordmarkFooter brandName="Level Up" />
+            <WordmarkFooter brandName="SKILL TRADE" />
         </motion.div>
     )
 }

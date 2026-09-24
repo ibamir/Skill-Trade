@@ -6,17 +6,19 @@ import { useScroll } from '@/hooks/use-scroll'
 import { MobileNav } from './mobile-nav'
 import { ThemeToggle } from '@/components/theme/theme-toggle'
 import { motion } from 'motion/react'
+import { useTheme } from 'next-themes'
 
 export const links = [
     { label: 'Features', href: '#features' },
     { label: 'How it works', href: '#how-it-works' },
-    { label: 'FAQ', href: '#f&q' },
-    { label: 'Interested', href: '#interested' },
-    {label: 'Help Us', href: '#help-us'}
+    { label: 'FAQ', href: '#faq' },
+    { label: 'Updates', href: '#interested' },
+    { label: 'Join the beta', href: '#help-us' },
 ]
 
 export function Header() {
     const scrolled = useScroll(10)
+    const { theme } = useTheme()
 
     return (
         <motion.div
@@ -39,12 +41,17 @@ export function Header() {
                     },
                 )}
             >
-                <a className="rounded-md" href="#home">
-                    <span className="flex items-center justify-center min-w-fit">
-                        <h1 className="text-2xl font-bold text-primary">
-                            Level up
-                        </h1>
-                        <p className="text-2xl font-bold text-chart-3">.</p>
+                <a
+                    className="rounded-md"
+                    href="#home"
+                    onClick={(event) => scrollToHash(event, '#home')}
+                >
+                    <span className="flex items-center justify-center min-w-fit gap-0.5">
+                        <img 
+                            src={theme === 'dark' ? '/dark.svg' : '/light.svg'} 
+                            alt="Skill Trade"
+                            className='w-20'
+                        />
                     </span>
                 </a>
                 <motion.div

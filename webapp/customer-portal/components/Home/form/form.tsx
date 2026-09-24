@@ -34,7 +34,7 @@ const questions = [
     },
     {
         id: 'interest',
-        question: 'What would you use Level Up for?',
+        question: 'What would you use Skill Trade for?',
         options: [
             {
                 value: 'study',
@@ -78,7 +78,7 @@ const questions = [
     },
     {
         id: 'likelihood',
-        question: 'Would you use Level Up if it launched today?',
+        question: 'Would you use Skill Trade if it launched today?',
         options: [
             {
                 value: 'definitely',
@@ -155,8 +155,8 @@ export function InterestForm() {
                 </h3>
 
                 <p className="mt-2 max-w-md text-sm text-muted-foreground">
-                    Your answers help us understand what people want from Level
-                    Up. We&apos;ll keep you updated about the launch.
+                    Your answers help us build the right courses, resources, and
+                    creator tools for the Skill Trade community.
                 </p>
             </motion.div>
         )
@@ -309,18 +309,18 @@ export function InterestFormSection() {
             initial={{ opacity: 0, y: 32 }}
             animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 32 }}
             transition={{ duration: 0.7, ease: 'easeOut' }}
-            id='help-us'
+            id="help-us"
         >
             <div className="mx-auto mb-12 max-w-2xl text-center">
                 <span className="mb-4 inline-block text-sm font-medium uppercase tracking-widest text-muted-foreground">
                     Quick community survey
                 </span>
                 <h2 className="text-4xl font-bold tracking-tight sm:text-5xl">
-                    Tell us what you need.
+                    Help shape Skill Trade.
                 </h2>
                 <p className="mt-5 text-lg text-muted-foreground">
-                    Answer four quick questions so we can shape Level Up around
-                    the skills, resources, and tools you actually want.
+                    Answer four quick questions about what you want to learn,
+                    create, and access when we launch.
                 </p>
             </div>
             <InterestForm />

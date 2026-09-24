@@ -16,9 +16,9 @@ export interface Newsletter2Props {
 }
 
 const Newsletter: React.FC<Newsletter2Props> = ({
-    heading = 'Subscribe to our newsletter',
-    description = 'Join our newsletter to get exclusive insights, upcoming skills workshops, tutor spotlights, and timely platform updates straight to your inbox.',
-    label = 'Stay Informed',
+    heading = 'Be first to know when we launch',
+    description = 'Get updates about new courses, creator opportunities, and the Skill Trade beta in your inbox.',
+    label = 'Get launch updates',
     placeholder = 'Enter your email',
     buttonText = 'Subscribe',
     disclaimer = (
@@ -35,7 +35,10 @@ const Newsletter: React.FC<Newsletter2Props> = ({
     ),
 }) => {
     return (
-        <section className="flex h-full w-full items-center justify-center py-12 md:py-16 p-8" id='interested'>
+        <section
+            className="flex h-full w-full items-center justify-center py-12 md:py-16 p-8"
+            id="interested"
+        >
             <div className="container mx-auto px-4 md:px-6">
                 <motion.div
                     className="from-primary to-primary/50 dark:to-primary/70 flex flex-col items-center justify-between gap-10 rounded-3xl bg-linear-to-b p-8 text-white md:p-12 lg:flex-row lg:gap-16 lg:p-16"
@@ -54,7 +57,7 @@ const Newsletter: React.FC<Newsletter2Props> = ({
                         <Badge className="text-primary backdrop-blur-2xl bg-background/50 dark:bg-background/70 p-3 rounded-xl font-bold">
                             <span className="flex items-center justify-center gap-2">
                                 <div className="size-2 animate-pulse rounded-full bg-primary" />
-                                <p>Weekly Community Brief</p>
+                                <p>Skill Trade launch updates</p>
                             </span>
                         </Badge>
                         <h2 className="text-3xl font-bold tracking-tight md:text-4xl lg:text-5xl">

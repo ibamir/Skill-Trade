@@ -13,8 +13,8 @@ const cardData = [
         id: 1,
         image: '/course-figma-to-webflowcover.jpeg',
         rotate: 'md:-rotate-5',
-        title: 'Figma to Webflow Mastery',
-        body: 'Build real freelance client websites from Tunis without coding friction',
+        title: 'Figma to Webflow for Freelancers',
+        body: 'Build client-ready websites and turn your design skills into paid work.',
         footer: (
             <div className="bg-secondary h-10 rounded-xl flex items-center justify-between px-2">
                 <span className="flex items-center justify-center gap-2 group">
@@ -22,7 +22,7 @@ const cardData = [
                         className="group-hover:-translate-y-0.5"
                         size={16}
                     />
-                    Pay with D17 / Flouci
+                    Pay locally with D17 or Flouci
                 </span>
                 Instant
             </div>
@@ -32,13 +32,13 @@ const cardData = [
         id: 2,
         image: '/how-to-use-supabase-with-nextjs.webp',
         rotate: '',
-        title: 'Next.js 15 & Supabase SaaS Engine',
-        body: 'Hands-on micro-course with automated local checkout integration for North African developers.',
+        title: 'Build a SaaS with Next.js',
+        body: 'A practical course for developers building and launching their first real product.',
         footer: (
             <div className="bg-secondary h-10 rounded-xl flex items-center justify-between px-2">
                 <span className="flex items-center justify-center gap-2">
                     <UserIcon size={16} />
-                    120 / 150 Seats
+                    120 learners joined
                 </span>
                 65 TND
             </div>
@@ -51,11 +51,11 @@ const cardData = [
         title: (
             <>
                 <CircleCheckIcon size={15} />
-                88% Creator Share
+                Keep 88% of every sale
             </>
         ),
         titleCentered: true,
-        body: 'No wire fees or foreign exchange losses. Your skill revenue deposits directly into your Tunisian bank or phone wallet.',
+        body: 'Sell your guides and courses with clear pricing and payouts designed for Tunisia.',
         footer: (
             <div className="bg-secondary h-12 rounded-xl flex flex-col justify-center gap-2 px-2">
                 <Progress
@@ -73,7 +73,7 @@ const cardData = [
         card: (
             <div className="flex flex-col items-center justify-center gap-3 h-60 w-full overflow-hidden rounded-xl bg-background p-4 border border-border">
                 <span className="flex items-center justify-between w-full font-bold text-md">
-                    Creator Balance
+                    Creator earnings
                     <WalletIcon className="text-primary" size={20} />
                 </span>
                 <span className="flex flex-col items-center justify-between w-full">
@@ -85,7 +85,7 @@ const cardData = [
                     </span>
 
                     <p className="text-xs text-muted-foreground">
-                        Ready for same-day mobile transfer
+                        Ready for local payout
                     </p>
                 </span>
                 <span className="flex items-center justify-between w-full bg-secondary rounded-xl p-3">
@@ -175,20 +175,21 @@ export default function HeroSection() {
                 viewport={{ once: false, amount: 0.6 }}
                 transition={{ duration: 0.5, ease: 'easeOut' }}
             >
-                Learn Practical Skills.
-                <br /> Monetize What’s Real.
+                Learn skills you can use.
+                <br /> Earn from what you know.
             </motion.h1>
 
             {/* Sub text */}
             <motion.h1
-                className="text-center text-muted-foreground font-body-lg text-body-lg text-on-surface-variant max-w-2xl mx-auto leading-relaxed mb-16"
+                className="text-center text-muted-foreground font-body-lg text-body-lg text-on-surface-variant max-w-3xl mx-auto leading-relaxed px-4"
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: false, amount: 0.6 }}
                 transition={{ duration: 0.5, delay: 0.1, ease: 'easeOut' }}
             >
-                The Tunisian marketplace for practical skills and guides. Buy
-                and sell <br className="md:block hidden" /> with{' '}
+                Skill Trade connects Tunisian learners with practical courses,
+                guides, and creators. Learn, buy, and sell{' '}
+                <br className="md:block hidden" /> with{' '}
                 <span className="font-semibold text-primary">
                     D17 &amp; Flouci
                 </span>{' '}
@@ -213,7 +214,7 @@ export default function HeroSection() {
                             ?.scrollIntoView({ behavior: 'smooth' })
                     }
                 >
-                    Interested
+                    Explore the marketplace
                 </ExpandingArrowButton>
             </motion.div>
 
