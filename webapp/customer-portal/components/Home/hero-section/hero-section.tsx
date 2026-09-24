@@ -163,10 +163,10 @@ export function Cards() {
 export default function HeroSection() {
     return (
         <div
-            className="w-full flex flex-col items-center justify-center gap-8 p-4"
+            className="w-full flex flex-col items-center justify-center gap-8 p-4 pb-32"
             id="home"
         >
-            <div className="md:min-h-50 min-h-15" />
+            <div className="min-h-20" />
             {/* Header */}
             <motion.h1
                 className="lg:text-7xl md:text-6xl text-4xl font-bold text-primary text-center"
@@ -209,18 +209,17 @@ export default function HeroSection() {
                     className="bg-primary capitalize font-extrabold"
                     onClick={() =>
                         document
-                            .getElementById('f&q')
+                            .getElementById('interested')
                             ?.scrollIntoView({ behavior: 'smooth' })
                     }
                 >
-                    Want to know more
+                    Interested
                 </ExpandingArrowButton>
             </motion.div>
 
             {/* Hover cards */}
             <div className="md:min-h-10" />
             <Cards />
-            <div className="md:min-h-20" />
         </div>
     )
 }
