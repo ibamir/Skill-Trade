@@ -10,7 +10,7 @@ import { motion } from 'motion/react'
 export const links = [
     { label: 'Features', href: '#features' },
     { label: 'How it works', href: '#how-it-works' },
-    { label: 'F&Q', href: '#f&q' },
+    { label: 'FAQ', href: '#f&q' },
     { label: 'Interested', href: '#interested' },
     {label: 'Help Us', href: '#help-us'}
 ]
