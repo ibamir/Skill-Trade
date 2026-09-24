@@ -1,6 +1,6 @@
 'use client'
 
-import { motion, useScroll, useTransform, useSpring } from 'framer-motion'
+import { motion, useScroll, useTransform, useSpring } from 'motion/react'
 import React, { useRef } from 'react'
 import { FigmaWebFlow, Payment, Features, CashOut } from './cards'
 import { Badge } from '@/components/reui/badge'
@@ -19,7 +19,7 @@ type Step = {
     description: string
     card: React.ReactNode
     tags?: string[]
-    encryption? : string
+    encryption?: string
     charging?: string
 }
 
@@ -67,10 +67,26 @@ const tags = [
 ]
 
 const stage = [
-    {id: '1', stage :' Vetted Micro-Skills ', icon: <CompassIcon size={15}/>},
-    {id: '2', stage :' Zero Foreign Cards Needed ', icon: <CreditCard size={15}/>},
-    {id: '3', stage :' Hands-on Cohorts & Assets ', icon: <UsersRoundIcon size={15}/>},
-    {id: '4', stage :' Fair & Transparent Earnings ', icon : <Landmark size={13} className='hover:animate-bounce'/>},
+    {
+        id: '1',
+        stage: ' Vetted Micro-Skills ',
+        icon: <CompassIcon size={15} />,
+    },
+    {
+        id: '2',
+        stage: ' Zero Foreign Cards Needed ',
+        icon: <CreditCard size={15} />,
+    },
+    {
+        id: '3',
+        stage: ' Hands-on Cohorts & Assets ',
+        icon: <UsersRoundIcon size={15} />,
+    },
+    {
+        id: '4',
+        stage: ' Fair & Transparent Earnings ',
+        icon: <Landmark size={13} className="hover:animate-bounce" />,
+    },
 ]
 
 export default function HowItWorks() {
@@ -92,15 +108,21 @@ export default function HowItWorks() {
     return (
         <section
             ref={containerRef}
-            className="relative mx-auto max-w-6xl px-6 py-32"
+            className="relative mx-auto max-w-6xl px-8 py-32"
             id="how-it-works"
         >
             {/* Header */}
-            <div className="mx-auto mb-24 max-w-2xl text-center">
+            <motion.div
+                className="mx-auto mb-24 max-w-2xl text-center"
+                initial={{ opacity: 0, y: 24 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: false, amount: 0.25 }}
+                transition={{ duration: 0.7, ease: 'easeOut' }}
+            >
                 <motion.span
                     initial={{ opacity: 0, y: 10 }}
                     whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
+                    viewport={{ once: false }}
                     transition={{ duration: 0.5 }}
                     className="mb-4 inline-block text-sm font-medium uppercase tracking-widest text-muted-foreground"
                 >
@@ -110,7 +132,7 @@ export default function HowItWorks() {
                 <motion.h2
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
+                    viewport={{ once: false }}
                     transition={{ duration: 0.6, delay: 0.1 }}
                     className="text-4xl font-bold tracking-tight sm:text-5xl"
                 >
@@ -120,7 +142,7 @@ export default function HowItWorks() {
                 <motion.p
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
+                    viewport={{ once: false }}
                     transition={{ duration: 0.6, delay: 0.2 }}
                     className="mt-5 text-lg text-muted-foreground"
                 >
@@ -130,7 +152,7 @@ export default function HowItWorks() {
                 <motion.p
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
+                    viewport={{ once: false }}
                     transition={{ duration: 0.6, delay: 0.2 }}
                     className="mt-5 text-lg text-muted-foreground"
                 >
@@ -149,7 +171,7 @@ export default function HowItWorks() {
                             </span>
                         ))}
                 </motion.p>
-            </div>
+            </motion.div>
 
             {/* Timeline */}
             <div className="relative">
@@ -161,7 +183,7 @@ export default function HowItWorks() {
                     style={{ height: lineHeight }}
                     className="absolute left-1/2 top-0 hidden w-px -translate-x-1/2 bg-foreground md:block"
                 />
-                
+
                 <div className="space-y-24 md:space-y-32">
                     {steps.map((step, index) => (
                         <TimelineStep
@@ -245,7 +267,7 @@ function TimelineStep({
                     x: 0,
                 }}
                 viewport={{
-                    once: true,
+                    once: false,
                     amount: 0.35,
                 }}
                 transition={{
@@ -267,7 +289,7 @@ function TimelineStep({
                         {stage.map((s) => (
                             <span key={s.id}>
                                 {step.number.toLowerCase().includes(s.id) && (
-                                    <span className='flex items-center justify-center gap-2'>
+                                    <span className="flex items-center justify-center gap-2">
                                         <span>{s.icon}</span>
                                         <span>{s.stage}</span>
                                     </span>
@@ -376,12 +398,13 @@ function TimelineStep({
                     opacity: 0,
                     x: index % 2 === 0 ? 30 : -30,
                 }}
+                style={{ scale: imageScale }}
                 whileInView={{
                     opacity: 1,
                     x: 0,
                 }}
                 viewport={{
-                    once: true,
+                    once: false,
                     amount: 0.35,
                 }}
                 transition={{

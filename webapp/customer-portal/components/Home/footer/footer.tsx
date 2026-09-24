@@ -1,17 +1,23 @@
 'use client'
 
 import { links } from '@/components/Home/navbar/header'
-import Link from 'next/link'
-import { cn } from '@/lib/utils'
 import { Separator } from '@base-ui/react'
 import WordmarkFooter from '@/components/ruixen/wordmark-footer'
+import { motion } from 'motion/react'
+import { scrollToHash } from '@/lib/utils'
 
 export default function Footer() {
     return (
-        <div className="w-full h-fit px-8 space-y-7 bg-background">
+        <motion.div
+            className="w-full h-fit px-8 space-y-7 bg-background"
+            initial={{ opacity: 0, y: 24 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: false, amount: 0.2 }}
+            transition={{ duration: 0.7, ease: 'easeOut' }}
+        >
             <div className="flex md:flex-row flex-col gap-4 items-center justify-between">
-                <div className="flex flex-col justify-center items-start gap-2">
-                    <a className="rounded-md" href="#">
+                <div className="flex flex-col justify-center items-start gap-2 w-full">
+                    <a className="rounded-md" href="#home">
                         <span className="flex items-center justify-center min-w-fit">
                             <h1 className="text-2xl font-bold text-primary">
                                 Level up
@@ -20,25 +26,29 @@ export default function Footer() {
                         </span>
                     </a>
                     <p className="text-muted-foreground max-w-70">
-                        Tunisia's decentralized talent & micro-skill platform.
-                        Powered by D17 & Flouci local settlements.
+                        Tunisia&apos;s decentralized talent & micro-skill
+                        platform. Powered by D17 & Flouci local settlements.
                     </p>
                 </div>
-                <div className="flex md:flex-row flex-wrap justify-center items-center gap-4">
+                <div className="flex md:flex-row flex-wrap justify-center items-center gap-4 md:min-w-fit">
                     {links.map((link) => (
-                        <Link key={link.label} href={link.href}>
-                            <p
-                                className='hover:text-primary text-accent-foreground dark:text-accent-foreground hover:font-bold'
-                            >
+                        <a
+                            key={link.label}
+                            href={link.href}
+                            onClick={(event) => scrollToHash(event, link.href)}
+                        >
+                            <p className="hover:text-primary text-accent-foreground dark:text-accent-foreground hover:font-bold">
                                 {link.label}
                             </p>
-                        </Link>
+                        </a>
                     ))}
                 </div>
             </div>
-            <Separator className='w-full h-px bg-border'/>
-            <p className='text-center'>© 2026 Level Up Inc. All rights reserved.</p>
-            <WordmarkFooter brandName='Level Up'/>
-        </div>
+            <Separator className="w-full h-px bg-border" />
+            <p className="text-center">
+                &copy; 2026 Level Up Inc. All rights reserved.
+            </p>
+            <WordmarkFooter brandName="Level Up" />
+        </motion.div>
     )
 }

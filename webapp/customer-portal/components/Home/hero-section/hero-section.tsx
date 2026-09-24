@@ -1,26 +1,12 @@
 'use client'
 
-import { motion, useScroll, useMotionValueEvent } from 'motion/react'
-import { useState } from 'react'
+import { motion } from 'motion/react'
 import { ExpandingArrowButton } from '@/components/motion/expanding-arrow-button'
 import { Card, CardContent, CardHeader } from '@/components/ui/card'
 import { CircleCheckIcon } from '@/components/ui/circle-check'
 import { Progress } from '@/components/ui/progress'
 import { UserIcon } from '@/components/ui/user'
 import { WalletIcon } from '@/components/ui/wallet'
-import { redirect } from 'next/navigation'
-
-/** True once the window has been scrolled at least once (stays true after). */
-function useHasScrolled() {
-    const { scrollY } = useScroll()
-    const [hasScrolled, setHasScrolled] = useState(false)
-
-    useMotionValueEvent(scrollY, 'change', () => {
-        if (!hasScrolled) setHasScrolled(true)
-    })
-
-    return hasScrolled
-}
 
 const cardData = [
     {
@@ -116,8 +102,6 @@ const cardData = [
 ]
 
 export function Cards() {
-    const hasScrolled = useHasScrolled()
-
     return (
         <div className="relative w-full max-w-5xl mx-auto pt-6 px-2 sm:px-6">
             <div className="grid md:grid-cols-[repeat(auto-fit,minmax(200px,1fr))] gird-rows items-center justify-center gap-6 lg:gap-8">
@@ -126,14 +110,11 @@ export function Cards() {
                         key={i}
                         className="w-full max-w-sm"
                         initial={{ opacity: 0, y: 40 }}
-                        animate={
-                            hasScrolled
-                                ? { opacity: 1, y: 0 }
-                                : { opacity: 0, y: 40 }
-                        }
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: false, amount: 0.2 }}
                         transition={{
                             duration: 0.4,
-                            delay: hasScrolled ? i * 0.1 : 0,
+                            delay: i * 0.1,
                             ease: 'easeOut',
                         }}
                     >
@@ -183,7 +164,7 @@ export default function HeroSection() {
     return (
         <div
             className="w-full flex flex-col items-center justify-center gap-8 p-4"
-            id="#"
+            id="home"
         >
             <div className="md:min-h-50 min-h-15" />
             {/* Header */}
@@ -191,7 +172,7 @@ export default function HeroSection() {
                 className="lg:text-7xl md:text-6xl text-4xl font-bold text-primary text-center"
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, amount: 0.6 }}
+                viewport={{ once: false, amount: 0.6 }}
                 transition={{ duration: 0.5, ease: 'easeOut' }}
             >
                 Learn Practical Skills.
@@ -203,7 +184,7 @@ export default function HeroSection() {
                 className="text-center text-muted-foreground font-body-lg text-body-lg text-on-surface-variant max-w-2xl mx-auto leading-relaxed mb-16"
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, amount: 0.6 }}
+                viewport={{ once: false, amount: 0.6 }}
                 transition={{ duration: 0.5, delay: 0.1, ease: 'easeOut' }}
             >
                 The Tunisian marketplace for practical skills and guides. Buy
@@ -219,14 +200,18 @@ export default function HeroSection() {
                 className="flex items-center justify-center"
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, amount: 0.6 }}
+                viewport={{ once: false, amount: 0.6 }}
                 transition={{ duration: 0.5, delay: 0.2, ease: 'easeOut' }}
             >
                 <ExpandingArrowButton
                     labelClassName="text-accent"
                     accentClassName="bg-secondary dark:bg-background"
                     className="bg-primary capitalize font-extrabold"
-                    onClick={() => redirect('#f&q')}
+                    onClick={() =>
+                        document
+                            .getElementById('f&q')
+                            ?.scrollIntoView({ behavior: 'smooth' })
+                    }
                 >
                     Want to know more
                 </ExpandingArrowButton>

@@ -1,24 +1,25 @@
 'use client'
 
-import Link from 'next/link'
-import { Button } from '@/components/ui/button'
 import { cn } from '@/lib/utils'
+import { scrollToHash } from '@/lib/utils'
 import { useScroll } from '@/hooks/use-scroll'
 import { MobileNav } from './mobile-nav'
 import { ThemeToggle } from '@/components/theme/theme-toggle'
+import { motion } from 'motion/react'
 
 export const links = [
     { label: 'Features', href: '#features' },
     { label: 'How it works', href: '#how-it-works' },
     { label: 'F&Q', href: '#f&q' },
-    { label: 'Want to know more', href: '#want-to-know-more' },
+    { label: 'Interested', href: '#interested' },
+    {label: 'Help Us', href: '#help-us'}
 ]
 
 export function Header() {
     const scrolled = useScroll(10)
 
     return (
-        <div
+        <motion.div
             className={cn(
                 'sticky top-0 z-50 flex items-center justify-center bg-background mx-auto w-full max-w-6xl md:transition-all md:ease-out',
                 {
@@ -26,6 +27,9 @@ export function Header() {
                         scrolled,
                 },
             )}
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, ease: 'easeOut' }}
         >
             <div
                 className={cn(
@@ -35,7 +39,7 @@ export function Header() {
                     },
                 )}
             >
-                <a className="rounded-md" href="#">
+                <a className="rounded-md" href="#home">
                     <span className="flex items-center justify-center min-w-fit">
                         <h1 className="text-2xl font-bold text-primary">
                             Level up
@@ -43,28 +47,54 @@ export function Header() {
                         <p className="text-2xl font-bold text-chart-3">.</p>
                     </span>
                 </a>
-                <div className="hidden items-center justify-between gap-4 flex-2 md:flex">
+                <motion.div
+                    className="hidden items-center justify-between gap-4 flex-2 md:flex"
+                    initial="hidden"
+                    animate="visible"
+                    variants={{
+                        hidden: {},
+                        visible: {
+                            transition: {
+                                staggerChildren: 0.08,
+                                delayChildren: 0.2,
+                            },
+                        },
+                    }}
+                >
                     <div className="flex items-center justify-center flex-1 gap-4">
                         {links.map((link) => (
-                            <Link key={link.label} href={link.href}>
-                                <p
-                                    className={cn(
-                                        'hover:text-primary text-accent-foreground dark:text-accent-foreground hover:font-bold',
-                                    )}
+                            <motion.div
+                                key={link.label}
+                                variants={{
+                                    hidden: { opacity: 0, y: -8 },
+                                    visible: { opacity: 1, y: 0 },
+                                }}
+                            >
+                                <a
+                                    href={link.href}
+                                    onClick={(event) =>
+                                        scrollToHash(event, link.href)
+                                    }
                                 >
-                                    {link.label}
-                                </p>
-                            </Link>
+                                    <p
+                                        className={cn(
+                                            'hover:text-primary text-accent-foreground dark:text-accent-foreground hover:font-bold',
+                                        )}
+                                    >
+                                        {link.label}
+                                    </p>
+                                </a>
+                            </motion.div>
                         ))}
                     </div>
                     {/* <Button className="min-w-fit h-10 text-accent dark:text-accent">
                         Get Started
                     </Button> */}
                     <ThemeToggle />
-                </div>
+                </motion.div>
 
                 <MobileNav />
             </div>
-        </div>
+        </motion.div>
     )
 }

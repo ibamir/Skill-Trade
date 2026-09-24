@@ -1,7 +1,7 @@
 'use client'
 
-import { useState } from 'react'
-import { motion } from 'framer-motion'
+import { useRef, useState } from 'react'
+import { motion, useInView } from 'motion/react'
 import { UserIcon } from '@/components/ui/user'
 import { GraduationCapIcon } from '@/components/ui/graduation-cap'
 import { BriefcaseBusinessIcon } from '@/components/ui/briefcase-business'
@@ -147,7 +147,7 @@ export function InterestForm() {
                 className="flex flex-col items-center justify-center py-16 text-center"
             >
                 <div className="mb-5 flex h-12 w-12 items-center justify-center rounded-full bg-foreground text-background">
-                    <CheckIcon size={25}/>
+                    <CheckIcon size={25} />
                 </div>
 
                 <h3 className="text-2xl font-semibold tracking-tight">
@@ -163,7 +163,13 @@ export function InterestForm() {
     }
 
     return (
-        <div className="mx-auto w-full max-w-xl">
+        <motion.div
+            className="mx-auto w-full max-w-xl"
+            initial={{ opacity: 0, y: 24 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: false, amount: 0.2 }}
+            transition={{ duration: 0.6, ease: 'easeOut' }}
+        >
             {/* Progress */}
             <div className="mb-8">
                 <div className="mb-2 flex items-center justify-between text-xs text-muted-foreground">
@@ -284,6 +290,40 @@ export function InterestForm() {
                     <ArrowRightIcon size={17} />
                 </motion.button>
             </div>
-        </div>
+        </motion.div>
+    )
+}
+
+export function InterestFormSection() {
+    const sectionRef = useRef<HTMLElement>(null)
+    const isInView = useInView(sectionRef, {
+        once: false,
+        amount: 0.05,
+        margin: '0px',
+    })
+
+    return (
+        <motion.section
+            ref={sectionRef}
+            className="mx-auto w-full max-w-6xl px-8 py-24"
+            initial={{ opacity: 0, y: 32 }}
+            animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 32 }}
+            transition={{ duration: 0.7, ease: 'easeOut' }}
+            id='help-us'
+        >
+            <div className="mx-auto mb-12 max-w-2xl text-center">
+                <span className="mb-4 inline-block text-sm font-medium uppercase tracking-widest text-muted-foreground">
+                    Quick community survey
+                </span>
+                <h2 className="text-4xl font-bold tracking-tight sm:text-5xl">
+                    Tell us what you need.
+                </h2>
+                <p className="mt-5 text-lg text-muted-foreground">
+                    Answer four quick questions so we can shape Level Up around
+                    the skills, resources, and tools you actually want.
+                </p>
+            </div>
+            <InterestForm />
+        </motion.section>
     )
 }
