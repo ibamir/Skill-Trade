@@ -1,8 +1,9 @@
 'use client'
 
 import React from 'react'
-import { Button } from '../ui/button' 
-import { Input } from '../ui/input' 
+import { motion } from 'motion/react'
+import { Button } from '../ui/button'
+import { Input } from '../ui/input'
 import { Badge } from '../reui/badge'
 
 export interface Newsletter2Props {
@@ -34,10 +35,22 @@ const Newsletter: React.FC<Newsletter2Props> = ({
     ),
 }) => {
     return (
-        <section className="flex h-full w-full items-center justify-center py-12 md:py-16">
+        <section className="flex h-full w-full items-center justify-center py-12 md:py-16 p-8" id='interested'>
             <div className="container mx-auto px-4 md:px-6">
-                <div className="from-primary to-primary/50 dark:to-primary/70 flex flex-col items-center justify-between gap-10 rounded-3xl bg-linear-to-b p-8 text-white md:p-12 lg:flex-row lg:gap-16 lg:p-16">
-                    <div className="flex w-full max-w-2xl flex-col space-y-5">
+                <motion.div
+                    className="from-primary to-primary/50 dark:to-primary/70 flex flex-col items-center justify-between gap-10 rounded-3xl bg-linear-to-b p-8 text-white md:p-12 lg:flex-row lg:gap-16 lg:p-16"
+                    initial={{ opacity: 0, y: 40 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: false, amount: 0.25 }}
+                    transition={{ duration: 0.7, ease: 'easeOut' }}
+                >
+                    <motion.div
+                        className="flex w-full max-w-2xl flex-col space-y-5"
+                        initial={{ opacity: 0, x: -24 }}
+                        whileInView={{ opacity: 1, x: 0 }}
+                        viewport={{ once: false }}
+                        transition={{ duration: 0.6, delay: 0.15 }}
+                    >
                         <Badge className="text-primary backdrop-blur-2xl bg-background/50 dark:bg-background/70 p-3 rounded-xl font-bold">
                             <span className="flex items-center justify-center gap-2">
                                 <div className="size-2 animate-pulse rounded-full bg-primary" />
@@ -50,9 +63,15 @@ const Newsletter: React.FC<Newsletter2Props> = ({
                         <p className="max-w-md text-white/70 leading-relaxed md:text-lg">
                             {description}
                         </p>
-                    </div>
+                    </motion.div>
 
-                    <div className="w-full max-w-md flex-1 lg:w-auto">
+                    <motion.div
+                        className="w-full max-w-md flex-1 lg:w-auto"
+                        initial={{ opacity: 0, x: 24 }}
+                        whileInView={{ opacity: 1, x: 0 }}
+                        viewport={{ once: false }}
+                        transition={{ duration: 0.6, delay: 0.25 }}
+                    >
                         <div className="flex flex-col space-y-3">
                             {label && (
                                 <label className="mb-1 block text-sm font-semibold text-white md:text-base">
@@ -83,12 +102,11 @@ const Newsletter: React.FC<Newsletter2Props> = ({
                                 </p>
                             )}
                         </div>
-                    </div>
-                </div>
+                    </motion.div>
+                </motion.div>
             </div>
         </section>
     )
 }
 
 export default Newsletter
-

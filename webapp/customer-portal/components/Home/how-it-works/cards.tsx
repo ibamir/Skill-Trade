@@ -1,21 +1,26 @@
-import { Badge } from "@/components/reui/badge"
-import { Button } from "@/components/ui/button"
-import { Card, CardContent, CardHeader } from "@/components/ui/card"
-import { CircleCheckIcon } from "@/components/ui/circle-check"
-import { DownloadIcon } from "@/components/ui/download"
-import { FolderArchiveIcon } from "@/components/ui/folder-archive"
-import { MessageSquareIcon } from "@/components/ui/message-square"
-import { Progress } from "@/components/ui/progress"
-import QrcodeIcon from "@/components/ui/qrcode-icon"
-import ScanBarcodeIcon from "@/components/ui/scan-barcode-icon"
-import { Separator } from "@base-ui/react"
-import Image from "next/image"
-
+import { Badge } from '@/components/reui/badge'
+import { Button } from '@/components/ui/button'
+import { Card, CardContent, CardHeader } from '@/components/ui/card'
+import { CircleCheckIcon } from '@/components/ui/circle-check'
+import { DownloadIcon } from '@/components/ui/download'
+import { FolderArchiveIcon } from '@/components/ui/folder-archive'
+import { MessageSquareIcon } from '@/components/ui/message-square'
+import { Progress } from '@/components/ui/progress'
+import QrcodeIcon from '@/components/ui/qrcode-icon'
+import ScanBarcodeIcon from '@/components/ui/scan-barcode-icon'
+import { Separator } from '@base-ui/react'
+import Image from 'next/image'
+import { motion } from 'motion/react'
 
 export function FigmaWebFlow() {
-
     return (
-        <div className="h-full w-full">
+        <motion.div
+            className="h-full w-full"
+            initial={{ opacity: 0, y: 18 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: false, amount: 0.2 }}
+            transition={{ duration: 0.55, ease: 'easeOut' }}
+        >
             <Card className="w-full border border-border rounded-3xl hover:-translate-y-4">
                 <CardContent className="flex flex-col gap-4">
                     <div className="relative h-48 w-full overflow-hidden rounded-xl">
@@ -38,13 +43,19 @@ export function FigmaWebFlow() {
                     </p>
                 </CardContent>
             </Card>
-        </div>
+        </motion.div>
     )
 }
 
 export function Payment() {
     return (
-        <div className="h-full w-full">
+        <motion.div
+            className="h-full w-full"
+            initial={{ opacity: 0, y: 18 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: false, amount: 0.2 }}
+            transition={{ duration: 0.55, ease: 'easeOut' }}
+        >
             <Card className="w-full border border-border rounded-3xl hover:-translate-y-4">
                 <CardContent className="flex flex-col gap-4">
                     <div className="flex flex-col items-center justify-center gap-4 h-full w-full overflow-hidden rounded-xl">
@@ -119,13 +130,19 @@ export function Payment() {
                     </div>
                 </CardContent>
             </Card>
-        </div>
+        </motion.div>
     )
 }
 
 export function Features() {
     return (
-        <div className="h-full w-full">
+        <motion.div
+            className="h-full w-full"
+            initial={{ opacity: 0, y: 18 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: false, amount: 0.2 }}
+            transition={{ duration: 0.55, ease: 'easeOut' }}
+        >
             <Card className="w-full border border-border rounded-3xl hover:-translate-y-4">
                 <CardContent>
                     <div className="bg-background shadow-md border border-primary p-4 flex flex-col gap-4 rounded-2xl">
@@ -176,13 +193,19 @@ export function Features() {
                     </div>
                 </CardContent>
             </Card>
-        </div>
+        </motion.div>
     )
 }
 
 export function CashOut() {
     return (
-        <div className="h-full w-full">
+        <motion.div
+            className="h-full w-full"
+            initial={{ opacity: 0, y: 18 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: false, amount: 0.2 }}
+            transition={{ duration: 0.55, ease: 'easeOut' }}
+        >
             <Card className="w-full border border-border rounded-3xl hover:-translate-y-4">
                 <CardContent className="flex flex-col gap-4">
                     <div className="flex flex-col items-center justify-center gap-4 h-full w-full overflow-hidden rounded-xl">
@@ -234,6 +257,6 @@ export function CashOut() {
                     </div>
                 </CardContent>
             </Card>
-        </div>
+        </motion.div>
     )
 }
