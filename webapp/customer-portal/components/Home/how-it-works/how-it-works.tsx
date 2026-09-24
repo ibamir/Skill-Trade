@@ -26,34 +26,34 @@ type Step = {
 const steps: Step[] = [
     {
         number: '01',
-        title: ' Discover & Choose Your Path ',
+        title: 'Find the right skill to learn',
         description:
-            ' Browse practical workshops, cheatsheets, and live cohorts in Darija and French. Built specifically for Tunisian students, techies, and modern freelancers looking for verified, actionable competence. ',
+            'Explore practical courses, guides, and live cohorts in Darija, French, and English. Choose resources that match your goals and your level.',
         card: <FigmaWebFlow />,
         tags: ['Freelance Contracts', 'Figma & Webflow', 'Next.js & SaaS'],
     },
     {
         number: '02',
-        title: ' Instant 1-Tap Checkout ',
+        title: 'Pay in Tunisian dinars',
         description:
-            ' No international Visa or Carte Technologique required. Complete purchases using your native Tunisian Dinars through D17 mobile post transfer or Flouci QR scan directly on your phone. ',
+            'No international card is required. Pay through D17 or Flouci and get access to your purchase without leaving the platform.',
         card: <Payment />,
         encryption: ' 128-bit Encrypted ',
         charging: ' 0% Currency Surcharge ',
     },
     {
         number: '03',
-        title: ' Learn via Cohorts & Resources ',
+        title: 'Learn with practical resources',
         description:
-            ' Instantly gain access to production GitHub repos, Figma system starter files, and private community group chats. Get direct code feedback and guidance without bureaucratic gatekeeping. ',
+            'Work through lessons, templates, exercises, and community spaces built to help you finish real projects and keep improving.',
         card: <Features />,
         tags: [' Instant asset download ', ' Discord / Telegram'],
     },
     {
         number: '04',
-        title: ' Automated Creator Cashout ',
+        title: 'Share your knowledge and earn',
         description:
-            ' Creators receive an industry-leading 88% revenue share. No international intermediary cuts or foreign tax withholding. Cash settles directly into your Tunisian postal or local bank account. ',
+            'Publish a course, guide, or resource for your audience. You keep 88% of each sale with clear pricing and local payout options.',
         card: <CashOut />,
         tags: [' Same-Week Payouts ', ' Auto Tax Invoice PDF '],
     },
@@ -136,7 +136,7 @@ export default function HowItWorks() {
                     transition={{ duration: 0.6, delay: 0.1 }}
                     className="text-4xl font-bold tracking-tight sm:text-5xl"
                 >
-                    From First Spark to Instant Settlement.
+                    From learning goal to useful result.
                 </motion.h2>
 
                 <motion.p
@@ -146,8 +146,8 @@ export default function HowItWorks() {
                     transition={{ duration: 0.6, delay: 0.2 }}
                     className="mt-5 text-lg text-muted-foreground"
                 >
-                    A seamless journey from discovering practical local skills
-                    to friction-free payments via D17 & Flouci.
+                    Discover a skill, pay locally, learn by doing, and share
+                    what you know with the next learner.
                 </motion.p>
                 <motion.p
                     initial={{ opacity: 0, y: 20 }}

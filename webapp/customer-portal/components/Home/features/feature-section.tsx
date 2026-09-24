@@ -42,11 +42,11 @@ export default function Features() {
                     Features
                 </span>
                 <h2 className="text-4xl font-bold tracking-tight sm:text-5xl">
-                    Built for Tunisian Reality
+                    Skills for real life and work
                 </h2>
                 <p className="text-muted-foreground text-sm leading-relaxed md:text-base">
-                    The complete platform for local skills and instant
-                    settlements. You share knowledge, we handle the rest.
+                    Learn practical skills, access useful resources, and sell
+                    what you know through a platform built for Tunisia.
                 </p>
             </motion.div>
 
@@ -106,10 +106,10 @@ function FeatureCard({
             </div>
 
             <div className="relative z-10 space-y-2">
-                <h3 className="font-medium text-base text-foreground">
+                <h3 className="min-h-12 font-medium text-base text-foreground">
                     {feature.title}
                 </h3>
-                <p className="text-muted-foreground text-xs leading-relaxed">
+                <p className="min-h-16 text-muted-foreground text-xs leading-relaxed">
                     {feature.description}
                 </p>
             </div>
@@ -119,27 +119,26 @@ function FeatureCard({
 
 const features: FeatureType[] = [
     {
-        title: 'Practical Micro-Skills',
+        title: 'Learn practical skills',
         icon: <RocketIcon />,
         description:
-            'Curated workshops and guides built for real market demand. No outdated theory.',
+            'Short courses and guides focused on skills you can use immediately.',
     },
     {
-        title: 'Instant Digital Access',
+        title: 'Access useful resources',
         icon: <KeyCircleIcon />,
         description:
-            'Direct unlock of files, cheat sheets, and private cohorts upon completion.',
+            'Templates, study guides, and community access in one place.',
     },
     {
-        title: '100% Local Rails',
+        title: 'Pay with local methods',
         icon: <ShieldCheckIcon />,
-        description:
-            'Native payment rails via D17 and Flouci. Zero foreign exchange barriers or fees.',
+        description: 'Pay in TND through familiar options like D17 and Flouci.',
     },
     {
-        title: 'Direct Creator Payouts',
+        title: 'Earn from what you know',
         icon: <CreditCard />,
         description:
-            'Automated cashouts straight to your postal wallet or bank with transparent 88% revenue share.',
+            'Sell your work with clear pricing and an 88% creator share.',
     },
 ]

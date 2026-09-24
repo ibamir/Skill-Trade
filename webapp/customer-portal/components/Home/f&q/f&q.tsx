@@ -13,22 +13,22 @@ import {
 const faqs = [
     {
         icon: GraduationCap,
-        question: 'What exactly is Level Up?',
-        answer: "Level Up is Tunisia's peer-to-peer marketplace for sharing knowledge and digital assets. Learn from students and experts, share what you know, and earn from your skills.",
+        question: 'What exactly is Skill Trade?',
+        answer: 'Skill Trade is a learning platform where people discover useful skills, learn from creators, and share what they know.',
     },
     {
         icon: Users,
-        question: 'Who can use Level Up?',
+        question: 'Who can use Skill Trade?',
         answer: 'Anyone. Students can find study resources, learners can develop practical digital skills, and creators or top students can turn their knowledge into an income.',
     },
     {
         icon: CreditCard,
         question: 'How do I pay without an international card?',
-        answer: 'Level Up is built for Tunisia. Everything is priced in TND, with local payment methods such as D17, Flouci, and Sobflous.',
+        answer: 'Skill Trade is built for learners and creators in Tunisia, with pricing in TND and local payment options such as D17 and Flouci.',
     },
     {
         icon: WalletCards,
-        question: 'Can I really make money on Level Up?',
+        question: 'Can I really make money on Skill Trade?',
         answer: 'Yes. Creators and top students can upload their content, set their own prices, and earn when others purchase it. Earnings can be withdrawn to D17 or Flouci.',
     },
     {
@@ -39,7 +39,7 @@ const faqs = [
     {
         icon: Rocket,
         question: 'When is the official launch?',
-        answer: 'Level Up is currently preparing for launch and onboarding its first creators and tutors. Join Beta Early Access to secure your spot and get notified when the platform opens.',
+        answer: 'Skill Trade is preparing for launch and onboarding its first creators and tutors. Join the beta to get notified when the platform opens.',
     },
 ]
 
@@ -69,7 +69,7 @@ const itemVariants: Variants = {
 
 export default function FrequentAskedQuestions() {
     return (
-        <section className="mx-auto w-full max-w-6xl px-8 py-24" id="f&q">
+        <section className="mx-auto w-full max-w-6xl px-8 py-24" id="faq">
             {/* Header */}
             <motion.div
                 initial={{ opacity: 0, y: 20 }}
@@ -85,7 +85,7 @@ export default function FrequentAskedQuestions() {
                     transition={{ duration: 0.5 }}
                     className="mb-4 inline-block text-sm font-medium uppercase tracking-widest text-muted-foreground"
                 >
-                    F&Q
+                    FAQ
                 </motion.span>
 
                 <motion.h2
@@ -106,7 +106,7 @@ export default function FrequentAskedQuestions() {
                     className="mt-5 text-lg text-muted-foreground"
                 >
                     Everything you need to know about learning, sharing, and
-                    earning on Level Up.
+                    earning on Skill Trade.
                 </motion.p>
             </motion.div>
 
