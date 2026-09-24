@@ -1,0 +1,241 @@
+'use client'
+
+import { motion, useScroll, useMotionValueEvent } from 'motion/react'
+import { useState } from 'react'
+import { ExpandingArrowButton } from '@/components/motion/expanding-arrow-button'
+import { Card, CardContent, CardHeader } from '@/components/ui/card'
+import { CircleCheckIcon } from '@/components/ui/circle-check'
+import { Progress } from '@/components/ui/progress'
+import { UserIcon } from '@/components/ui/user'
+import { WalletIcon } from '@/components/ui/wallet'
+import { redirect } from 'next/navigation'
+
+/** True once the window has been scrolled at least once (stays true after). */
+function useHasScrolled() {
+    const { scrollY } = useScroll()
+    const [hasScrolled, setHasScrolled] = useState(false)
+
+    useMotionValueEvent(scrollY, 'change', () => {
+        if (!hasScrolled) setHasScrolled(true)
+    })
+
+    return hasScrolled
+}
+
+const cardData = [
+    {
+        id: 1,
+        image: '/course-figma-to-webflowcover.jpeg',
+        rotate: 'md:-rotate-5',
+        title: 'Figma to Webflow Mastery',
+        body: 'Build real freelance client websites from Tunis without coding friction',
+        footer: (
+            <div className="bg-secondary h-10 rounded-xl flex items-center justify-between px-2">
+                <span className="flex items-center justify-center gap-2 group">
+                    <WalletIcon
+                        className="group-hover:-translate-y-0.5"
+                        size={16}
+                    />
+                    Pay with D17 / Flouci
+                </span>
+                Instant
+            </div>
+        ),
+    },
+    {
+        id: 2,
+        image: '/how-to-use-supabase-with-nextjs.webp',
+        rotate: '',
+        title: 'Next.js 15 & Supabase SaaS Engine',
+        body: 'Hands-on micro-course with automated local checkout integration for North African developers.',
+        footer: (
+            <div className="bg-secondary h-10 rounded-xl flex items-center justify-between px-2">
+                <span className="flex items-center justify-center gap-2">
+                    <UserIcon size={16} />
+                    120 / 150 Seats
+                </span>
+                65 TND
+            </div>
+        ),
+    },
+    {
+        id: 3,
+        image: '/how-to-use-supabase-with-nextjs.webp',
+        rotate: 'md:rotate-5',
+        title: (
+            <>
+                <CircleCheckIcon size={15} />
+                88% Creator Share
+            </>
+        ),
+        titleCentered: true,
+        body: 'No wire fees or foreign exchange losses. Your skill revenue deposits directly into your Tunisian bank or phone wallet.',
+        footer: (
+            <div className="bg-secondary h-12 rounded-xl flex flex-col justify-center gap-2 px-2">
+                <Progress
+                    value={80}
+                    max={100}
+                    min={0}
+                    className="w-full h-fit"
+                />
+                <span className="flex items-center justify-between gap-2 text-xs">
+                    <h1>Creator Payout: 88%</h1>
+                    <h1>Platform + Gateway: 12%</h1>
+                </span>
+            </div>
+        ),
+        card: (
+            <div className="flex flex-col items-center justify-center gap-3 h-60 w-full overflow-hidden rounded-xl bg-background p-4 border border-border">
+                <span className="flex items-center justify-between w-full font-bold text-md">
+                    Creator Balance
+                    <WalletIcon className="text-primary" size={20} />
+                </span>
+                <span className="flex flex-col items-center justify-between w-full">
+                    <span className="flex items-center justify-baseline gap-2">
+                        <h1 className="text-4xl font-bold text-primary">
+                            1,480.00
+                        </h1>
+                        <p className="text-sm">TND</p>
+                    </span>
+
+                    <p className="text-xs text-muted-foreground">
+                        Ready for same-day mobile transfer
+                    </p>
+                </span>
+                <span className="flex items-center justify-between w-full bg-secondary rounded-xl p-3">
+                    <p>Flouci App Wallet</p>
+                    <p className="text-green-600 font-bold">Connected</p>
+                </span>
+                <span className="flex items-center justify-between w-full bg-secondary rounded-xl p-3">
+                    <p>D17 App Wallet</p>
+                    <p className="text-green-600 font-bold">Connected</p>
+                </span>
+            </div>
+        ),
+    },
+]
+
+export function Cards() {
+    const hasScrolled = useHasScrolled()
+
+    return (
+        <div className="relative w-full max-w-5xl mx-auto pt-6 px-2 sm:px-6">
+            <div className="grid md:grid-cols-[repeat(auto-fit,minmax(200px,1fr))] gird-rows items-center justify-center gap-6 lg:gap-8">
+                {cardData.map((card, i) => (
+                    <motion.div
+                        key={i}
+                        className="w-full max-w-sm"
+                        initial={{ opacity: 0, y: 40 }}
+                        animate={
+                            hasScrolled
+                                ? { opacity: 1, y: 0 }
+                                : { opacity: 0, y: 40 }
+                        }
+                        transition={{
+                            duration: 0.4,
+                            delay: hasScrolled ? i * 0.1 : 0,
+                            ease: 'easeOut',
+                        }}
+                    >
+                        <Card
+                            className={`w-full border border-border rounded-3xl hover:-translate-y-10 hover:duration-200 ${card.rotate}`}
+                        >
+                            <CardContent className="flex flex-col gap-4 h-full">
+                                {card.id === 3 ? (
+                                    <span className="mb-auto">{card.card}</span>
+                                ) : (
+                                    <div className="relative h-48 w-full overflow-hidden rounded-xl mb-auto">
+                                        <img
+                                            src={card.image}
+                                            alt="16:9"
+                                            width={1000}
+                                            height={800}
+                                            className="h-full w-full object-cover"
+                                        />
+                                    </div>
+                                )}
+
+                                <CardHeader
+                                    className={`text-xl font-bold p-0 ${
+                                        card.titleCentered
+                                            ? 'flex items-center justify-center gap-2'
+                                            : ''
+                                    }`}
+                                >
+                                    {card.title}
+                                </CardHeader>
+
+                                <p className="text-muted-foreground text-sm">
+                                    {card.body}
+                                </p>
+
+                                {card.footer}
+                            </CardContent>
+                        </Card>
+                    </motion.div>
+                ))}
+            </div>
+        </div>
+    )
+}
+
+export default function HeroSection() {
+    return (
+        <div
+            className="w-full flex flex-col items-center justify-center gap-8 p-4"
+            id="#"
+        >
+            <div className="md:min-h-50 min-h-15" />
+            {/* Header */}
+            <motion.h1
+                className="lg:text-7xl md:text-6xl text-4xl font-bold text-primary text-center"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, amount: 0.6 }}
+                transition={{ duration: 0.5, ease: 'easeOut' }}
+            >
+                Learn Practical Skills.
+                <br /> Monetize What’s Real.
+            </motion.h1>
+
+            {/* Sub text */}
+            <motion.h1
+                className="text-center text-muted-foreground font-body-lg text-body-lg text-on-surface-variant max-w-2xl mx-auto leading-relaxed mb-16"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, amount: 0.6 }}
+                transition={{ duration: 0.5, delay: 0.1, ease: 'easeOut' }}
+            >
+                The Tunisian marketplace for practical skills and guides. Buy
+                and sell <br className="md:block hidden" /> with{' '}
+                <span className="font-semibold text-primary">
+                    D17 &amp; Flouci
+                </span>{' '}
+                — zero foreign cards needed.
+            </motion.h1>
+
+            {/* Call to action */}
+            <motion.div
+                className="flex items-center justify-center"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, amount: 0.6 }}
+                transition={{ duration: 0.5, delay: 0.2, ease: 'easeOut' }}
+            >
+                <ExpandingArrowButton
+                    labelClassName="text-accent"
+                    accentClassName="bg-secondary dark:bg-background"
+                    className="bg-primary capitalize font-extrabold"
+                    onClick={() => redirect('#f&q')}
+                >
+                    Want to know more
+                </ExpandingArrowButton>
+            </motion.div>
+
+            {/* Hover cards */}
+            <div className="md:min-h-10" />
+            <Cards />
+            <div className="md:min-h-20" />
+        </div>
+    )
+}
