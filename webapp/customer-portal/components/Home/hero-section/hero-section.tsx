@@ -167,7 +167,7 @@ export default function HeroSection() {
     return (
         <div
             className="w-full flex flex-col items-center justify-center gap-8 p-4 pb-32"
-            id="home"
+            
         >
             <div className="min-h-20" />
             {/* Header */}
