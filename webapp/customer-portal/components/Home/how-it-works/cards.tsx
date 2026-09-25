@@ -21,7 +21,7 @@ export function FigmaWebFlow() {
             viewport={{ once: false, amount: 0.2 }}
             transition={{ duration: 0.55, ease: 'easeOut' }}
         >
-            <Card className="w-full border border-border rounded-3xl hover:-translate-y-4">
+            <Card className="w-full border border-primary shadow-sm rounded-3xl hover:-translate-y-4">
                 <CardContent className="flex flex-col gap-4">
                     <div className="relative h-48 w-full overflow-hidden rounded-xl">
                         <img
@@ -56,10 +56,10 @@ export function Payment() {
             viewport={{ once: false, amount: 0.2 }}
             transition={{ duration: 0.55, ease: 'easeOut' }}
         >
-            <Card className="w-full border border-border rounded-3xl hover:-translate-y-4">
+            <Card className="w-full border border-primary shadow-sm rounded-3xl hover:-translate-y-4">
                 <CardContent className="flex flex-col gap-4">
                     <div className="flex flex-col items-center justify-center gap-4 h-full w-full overflow-hidden rounded-xl">
-                        <div className="flex flex-col items-center justify-center gap-4 h-fit w-full overflow-hidden rounded-xl bg-background shadow-md border border-primary p-4">
+                        <div className="flex flex-col items-center justify-center gap-4 h-fit w-full overflow-hidden rounded-xl bg-background shadow-md border-2 border-border p-4">
                             <span className="flex items-center text-primary justify-between w-full font-bold text-md">
                                 <span className="flex items-center justify-center gap-2">
                                     <ScanBarcodeIcon size={20} />
@@ -143,9 +143,9 @@ export function Features() {
             viewport={{ once: false, amount: 0.2 }}
             transition={{ duration: 0.55, ease: 'easeOut' }}
         >
-            <Card className="w-full border border-border rounded-3xl hover:-translate-y-4">
+            <Card className="w-full border border-primary shadow-sm rounded-3xl hover:-translate-y-4">
                 <CardContent>
-                    <div className="bg-background shadow-md border border-primary p-4 flex flex-col gap-4 rounded-2xl">
+                    <div className="bg-background shadow-md border-2 border-border p-4 flex flex-col gap-4 rounded-2xl">
                         <CardHeader className="text-md p-0">
                             <span className="flex items-center justify-between gap-2">
                                 <p className="uppercase font-bold text-primary">
@@ -206,10 +206,10 @@ export function CashOut() {
             viewport={{ once: false, amount: 0.2 }}
             transition={{ duration: 0.55, ease: 'easeOut' }}
         >
-            <Card className="w-full border border-border rounded-3xl hover:-translate-y-4">
+            <Card className="w-full border border-primary shadow-sm rounded-3xl hover:-translate-y-4">
                 <CardContent className="flex flex-col gap-4">
                     <div className="flex flex-col items-center justify-center gap-4 h-full w-full overflow-hidden rounded-xl">
-                        <div className="flex flex-col items-center justify-center gap-2 h-fit w-full overflow-hidden rounded-xl bg-background shadow-md border border-primary p-4">
+                        <div className="flex flex-col items-center justify-center gap-2 h-fit w-full overflow-hidden rounded-xl bg-background shadow-md border-2 border-border p-4">
                             <span className="flex items-center text-primary justify-between w-full font-bold text-md">
                                 <span className="flex items-center justify-center gap-2">
                                     <ScanBarcodeIcon size={20} />

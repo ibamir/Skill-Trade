@@ -71,14 +71,14 @@ const cardData = [
             </div>
         ),
         card: (
-            <div className="flex flex-col items-center justify-center gap-3 h-60 w-full overflow-hidden rounded-xl bg-background p-4 border border-border">
-                <span className="flex items-center justify-between w-full font-bold text-md">
+            <div className="flex flex-col items-center justify-center gap-2 h-48 w-full overflow-hidden rounded-xl bg-background p-4 border border-border">
+                <span className="flex items-center justify-between w-full font-bold text-sm">
                     Creator earnings
-                    <WalletIcon className="text-primary" size={20} />
+                    <WalletIcon className="text-primary" size={17} />
                 </span>
                 <span className="flex flex-col items-center justify-between w-full">
                     <span className="flex items-center justify-baseline gap-2">
-                        <h1 className="text-4xl font-bold text-primary">
+                        <h1 className="text-3xl font-bold text-primary">
                             1,480.00
                         </h1>
                         <p className="text-sm">TND</p>
@@ -88,11 +88,11 @@ const cardData = [
                         Ready for local payout
                     </p>
                 </span>
-                <span className="flex items-center justify-between w-full bg-secondary rounded-xl p-3">
+                <span className="flex items-center justify-between w-full bg-secondary rounded-xl p-2">
                     <p>Flouci App Wallet</p>
                     <p className="text-green-600 font-bold">Connected</p>
                 </span>
-                <span className="flex items-center justify-between w-full bg-secondary rounded-xl p-3">
+                <span className="flex items-center justify-between w-full bg-secondary rounded-xl p-2">
                     <p>D17 App Wallet</p>
                     <p className="text-green-600 font-bold">Connected</p>
                 </span>
@@ -119,7 +119,7 @@ export function Cards() {
                         }}
                     >
                         <Card
-                            className={`w-full border border-border rounded-3xl hover:-translate-y-10 hover:duration-200 ${card.rotate}`}
+                            className={`w-full border border-primary rounded-3xl hover:-translate-y-10 hover:duration-200 shadow-md ${card.rotate}`}
                         >
                             <CardContent className="flex flex-col gap-4 h-full">
                                 {card.id === 3 ? (
