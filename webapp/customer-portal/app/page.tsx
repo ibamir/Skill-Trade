@@ -4,8 +4,8 @@ import Footer from '@/components/Home/footer/footer'
 import HeroSection from '@/components/Home/hero-section/hero-section'
 import HowItWorks from '@/components/Home/how-it-works/how-it-works'
 import { Header } from '@/components/Home/navbar/header'
-import Newsletter from '@/components/Home/newsletter'
 import { InterestFormSection } from '@/components/Home/form/form'
+import Newsletter from '@/components/Home/newsletter'
 
 export default function Home() {
     return (
@@ -15,8 +15,8 @@ export default function Home() {
             <Features />
             <HowItWorks />
             <FrequentAskedQuestions />
-            <Newsletter />
             <InterestFormSection />
+            <Newsletter />
             <Footer />
         </div>
     )

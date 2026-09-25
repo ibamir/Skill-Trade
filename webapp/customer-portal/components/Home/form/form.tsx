@@ -9,6 +9,7 @@ import { CheckIcon } from '@/components/ui/check'
 import { ArrowRightIcon } from '@/components/ui/arrow-right'
 import { ArrowLeftIcon } from '@/components/ui/arrow-left'
 import { Button } from '@/components/ui/button'
+import { Input } from '@/components/ui/input'
 
 const questions = [
     {
@@ -77,26 +78,10 @@ const questions = [
         ],
     },
     {
-        id: 'likelihood',
-        question: 'Would you use Skill Trade if it launched today?',
-        options: [
-            {
-                value: 'definitely',
-                label: 'Definitely',
-            },
-            {
-                value: 'probably',
-                label: 'Probably',
-            },
-            {
-                value: 'maybe',
-                label: 'Maybe, I want to see more',
-            },
-            {
-                value: 'not-sure',
-                label: "I'm not sure yet",
-            },
-        ],
+        id: 'email',
+        question: 'Where should we send launch updates?',
+        type: 'email',
+        options: [],
     },
 ]
 
@@ -107,6 +92,7 @@ export function InterestForm() {
 
     const question = questions[currentQuestion]
     const selectedAnswer = answers[question.id]
+    const isEmailQuestion = question.type === 'email'
 
     const selectAnswer = (value: string) => {
         setAnswers((prev) => ({
@@ -218,50 +204,66 @@ export function InterestForm() {
                 </h2>
 
                 <p className="mt-2 text-sm text-muted-foreground">
-                    Choose the option that fits you best.
+                    {isEmailQuestion
+                        ? 'Enter your email to get notified when we launch.'
+                        : 'Choose the option that fits you best.'}
                 </p>
 
-                <div className="mt-6 space-y-3">
-                    {question.options.map((option) => {
-                        const Icon = 'icon' in option ? option.icon : null
+                {isEmailQuestion ? (
+                    <Input
+                        type="email"
+                        value={selectedAnswer ?? ''}
+                        onChange={(event) => selectAnswer(event.target.value)}
+                        placeholder="Enter your email"
+                        className="mt-6 h-12 rounded-xl"
+                        required
+                    />
+                ) : (
+                    <div className="mt-6 space-y-3">
+                        {question.options.map((option) => {
+                            const Icon = 'icon' in option ? option.icon : null
 
-                        const isSelected = selectedAnswer === option.value
+                            const isSelected = selectedAnswer === option.value
 
-                        return (
-                            <motion.button
-                                key={option.value}
-                                type="button"
-                                onClick={() => selectAnswer(option.value)}
-                                whileTap={{ scale: 0.98 }}
-                                className={`flex w-full items-center gap-3 rounded-xl border p-4 text-left transition-colors ${
-                                    isSelected
-                                        ? 'border-foreground bg-muted'
-                                        : 'hover:bg-muted/50'
-                                }`}
-                            >
-                                {Icon && (
-                                    <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg border bg-background">
-                                        <Icon className="h-4 w-4" size={14} />
-                                    </div>
-                                )}
-
-                                <span className="flex-1 text-sm font-medium">
-                                    {option.label}
-                                </span>
-
-                                <div
-                                    className={`flex h-5 w-5 items-center justify-center rounded-full border ${
+                            return (
+                                <motion.button
+                                    key={option.value}
+                                    type="button"
+                                    onClick={() => selectAnswer(option.value)}
+                                    whileTap={{ scale: 0.98 }}
+                                    className={`flex w-full items-center gap-3 rounded-xl border p-4 text-left transition-colors ${
                                         isSelected
-                                            ? 'border-foreground bg-foreground text-background'
-                                            : 'border-muted-foreground/30'
+                                            ? 'border-foreground bg-muted'
+                                            : 'hover:bg-muted/50'
                                     }`}
                                 >
-                                    {isSelected && <CheckIcon size={13} />}
-                                </div>
-                            </motion.button>
-                        )
-                    })}
-                </div>
+                                    {Icon && (
+                                        <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg border bg-background">
+                                            <Icon
+                                                className="h-4 w-4"
+                                                size={14}
+                                            />
+                                        </div>
+                                    )}
+
+                                    <span className="flex-1 text-sm font-medium">
+                                        {option.label}
+                                    </span>
+
+                                    <div
+                                        className={`flex h-5 w-5 items-center justify-center rounded-full border ${
+                                            isSelected
+                                                ? 'border-foreground bg-foreground text-background'
+                                                : 'border-muted-foreground/30'
+                                        }`}
+                                    >
+                                        {isSelected && <CheckIcon size={13} />}
+                                    </div>
+                                </motion.button>
+                            )
+                        })}
+                    </div>
+                )}
             </motion.div>
 
             {/* Navigation */}
@@ -319,8 +321,8 @@ export function InterestFormSection() {
                     Help shape Skill Trade.
                 </h2>
                 <p className="mt-5 text-lg text-muted-foreground">
-                    Answer four quick questions about what you want to learn,
-                    create, and access when we launch.
+                    Answer a few quick questions about what you want to learn,
+                    create, and access, then get notified when we launch.
                 </p>
             </div>
             <InterestForm />

@@ -156,6 +156,9 @@ export function Cards() {
                     </motion.div>
                 ))}
             </div>
+            <p className="mt-3 text-center text-xs text-muted-foreground">
+                Product preview - illustrative data.
+            </p>
         </div>
     )
 }
@@ -187,18 +190,17 @@ export default function HeroSection() {
                 viewport={{ once: false, amount: 0.6 }}
                 transition={{ duration: 0.5, delay: 0.1, ease: 'easeOut' }}
             >
-                Skill Trade connects Tunisian learners with practical courses,
-                guides, and creators. Learn, buy, and sell{' '}
-                <br className="md:block hidden" /> with{' '}
+                Skill Trade is preparing to connect Tunisian learners with
+                practical courses, guides, and creators. Learn, share, and sell{' '}
                 <span className="font-semibold text-primary">
                     D17 &amp; Flouci
                 </span>{' '}
-                — zero foreign cards needed.
+                — no foreign card needed.
             </motion.h1>
 
             {/* Call to action */}
             <motion.div
-                className="flex items-center justify-center"
+                className="flex flex-wrap items-center justify-center gap-4"
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: false, amount: 0.6 }}
@@ -214,7 +216,7 @@ export default function HeroSection() {
                             ?.scrollIntoView({ behavior: 'smooth' })
                     }
                 >
-                    Explore the marketplace
+                    Join the beta
                 </ExpandingArrowButton>
             </motion.div>
 

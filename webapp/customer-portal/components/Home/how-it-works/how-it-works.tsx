@@ -28,7 +28,7 @@ const steps: Step[] = [
         number: '01',
         title: 'Find the right skill to learn',
         description:
-            'Explore practical courses, guides, and live cohorts in Darija, French, and English. Choose resources that match your goals and your level.',
+            'When Skill Trade launches, explore practical courses, guides, and live cohorts in Darija, French, and English. Choose resources that match your goals and your level.',
         card: <FigmaWebFlow />,
         tags: ['Freelance Contracts', 'Figma & Webflow', 'Next.js & SaaS'],
     },
@@ -36,7 +36,7 @@ const steps: Step[] = [
         number: '02',
         title: 'Pay in Tunisian dinars',
         description:
-            'No international card is required. Pay through D17 or Flouci and get access to your purchase without leaving the platform.',
+            'When the platform opens, no international card will be required. Pay through D17 or Flouci and access your purchase without leaving the platform.',
         card: <Payment />,
         encryption: ' 128-bit Encrypted ',
         charging: ' 0% Currency Surcharge ',
@@ -45,7 +45,7 @@ const steps: Step[] = [
         number: '03',
         title: 'Learn with practical resources',
         description:
-            'Work through lessons, templates, exercises, and community spaces built to help you finish real projects and keep improving.',
+            'At launch, work through lessons, templates, exercises, and community spaces built to help you finish real projects and keep improving.',
         card: <Features />,
         tags: [' Instant asset download ', ' Discord / Telegram'],
     },
@@ -53,7 +53,7 @@ const steps: Step[] = [
         number: '04',
         title: 'Share your knowledge and earn',
         description:
-            'Publish a course, guide, or resource for your audience. You keep 88% of each sale with clear pricing and local payout options.',
+            'Creators will be able to publish a course, guide, or resource for their audience, keep 88% of each sale, and choose clear local payout options.',
         card: <CashOut />,
         tags: [' Same-Week Payouts ', ' Auto Tax Invoice PDF '],
     },
@@ -91,7 +91,6 @@ const stage = [
 
 export default function HowItWorks() {
     const containerRef = useRef<HTMLDivElement>(null)
-
     const { scrollYProgress } = useScroll({
         target: containerRef,
         offset: ['start 75%', 'end 25%'],

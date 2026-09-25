@@ -34,8 +34,8 @@ export default function Footer() {
                         </span>
                     </a>
                     <p className="text-muted-foreground max-w-70">
-                        Tunisia&apos;s decentralized talent & micro-skill
-                        platform. Powered by D17 & Flouci local settlements.
+                        Tunisia&apos;s talent & micro-skill platform. Powered by
+                        D17 & Flouci local settlements.
                     </p>
                 </div>
                 <div className="flex md:flex-row flex-wrap justify-center items-center gap-4 md:min-w-fit">

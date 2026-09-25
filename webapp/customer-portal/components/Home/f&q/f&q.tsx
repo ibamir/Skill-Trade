@@ -24,12 +24,12 @@ const faqs = [
     {
         icon: CreditCard,
         question: 'How do I pay without an international card?',
-        answer: 'Skill Trade is built for learners and creators in Tunisia, with pricing in TND and local payment options such as D17 and Flouci.',
+        answer: 'No more asking a friend abroad to pay or facing a declined foreign card. When Skill Trade launches, you will be able to pay in TND through local options such as D17 and Flouci.',
     },
     {
         icon: WalletCards,
         question: 'Can I really make money on Skill Trade?',
-        answer: 'Yes. Creators and top students can upload their content, set their own prices, and earn when others purchase it. Earnings can be withdrawn to D17 or Flouci.',
+        answer: 'When Skill Trade launches, creators and top students will be able to upload content, set their own prices, and earn when others purchase it. Earnings can be withdrawn to D17 or Flouci.',
     },
     {
         icon: ShieldCheck,

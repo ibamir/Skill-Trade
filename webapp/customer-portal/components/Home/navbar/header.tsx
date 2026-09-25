@@ -13,7 +13,7 @@ export const links = [
     { label: 'How it works', href: '#how-it-works' },
     { label: 'FAQ', href: '#faq' },
     { label: 'Updates', href: '#interested' },
-    { label: 'Join the beta', href: '#help-us' },
+    { label: 'Take the survey', href: '#help-us' },
 ]
 
 export function Header() {
@@ -47,10 +47,10 @@ export function Header() {
                     onClick={(event) => scrollToHash(event, '#home')}
                 >
                     <span className="flex items-center justify-center min-w-fit gap-0.5">
-                        <img 
-                            src={theme === 'dark' ? '/dark.svg' : '/light.svg'} 
+                        <img
+                            src={theme === 'dark' ? '/dark.svg' : '/light.svg'}
                             alt="Skill Trade"
-                            className='w-20'
+                            className="w-20"
                         />
                     </span>
                 </a>
