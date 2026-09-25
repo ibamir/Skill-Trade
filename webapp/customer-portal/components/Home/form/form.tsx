@@ -1,8 +1,7 @@
 'use client'
 
-import { useRef, useState } from 'react'
+import { useId, useRef, useState } from 'react'
 import { motion, useInView } from 'motion/react'
-import { UserIcon } from '@/components/ui/user'
 import { GraduationCapIcon } from '@/components/ui/graduation-cap'
 import { BriefcaseBusinessIcon } from '@/components/ui/briefcase-business'
 import { CheckIcon } from '@/components/ui/check'
@@ -10,6 +9,9 @@ import { ArrowRightIcon } from '@/components/ui/arrow-right'
 import { ArrowLeftIcon } from '@/components/ui/arrow-left'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
+import { Label } from '@/components/ui/label'
+import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group'
+import { cn } from '@/lib/utils'
 
 const questions = [
     {
@@ -22,9 +24,9 @@ const questions = [
                 icon: GraduationCapIcon,
             },
             {
-                value: 'learner',
-                label: 'Someone looking to learn',
-                icon: UserIcon,
+                value: 'professional',
+                label: 'Working professional / freelancer',
+                icon: BriefcaseBusinessIcon,
             },
             {
                 value: 'creator',
@@ -38,20 +40,16 @@ const questions = [
         question: 'What would you use Skill Trade for?',
         options: [
             {
-                value: 'study',
-                label: 'Find study resources',
-            },
-            {
-                value: 'skills',
-                label: 'Learn practical skills',
+                value: 'learn',
+                label: 'Learn something new',
             },
             {
                 value: 'sell',
-                label: 'Share and sell my knowledge',
+                label: 'Sell / share what I know',
             },
             {
                 value: 'both',
-                label: 'Both learning and selling',
+                label: 'Both',
             },
         ],
     },
@@ -60,20 +58,46 @@ const questions = [
         question: 'What would you be most interested in?',
         options: [
             {
-                value: 'pdfs',
-                label: 'PDFs & study guides',
+                value: 'templates',
+                label: 'Templates & cheatsheets',
             },
             {
                 value: 'courses',
                 label: 'Mini-courses & videos',
             },
             {
-                value: 'exams',
-                label: 'Solved exams & exercises',
+                value: 'cohorts',
+                label: 'Live cohorts / group sessions',
             },
             {
                 value: 'skills',
                 label: 'Practical skill tutorials',
+            },
+            {
+                value: 'other',
+                label: 'Other',
+            },
+        ],
+    },
+    {
+        id: 'likelihood',
+        question: 'Would you use Skill Trade if it launched today?',
+        options: [
+            {
+                value: 'definitely',
+                label: 'Definitely',
+            },
+            {
+                value: 'probably',
+                label: 'Probably',
+            },
+            {
+                value: 'maybe',
+                label: 'Maybe, I want to see more',
+            },
+            {
+                value: 'probably-not',
+                label: 'Probably not right now',
             },
         ],
     },
@@ -86,6 +110,7 @@ const questions = [
 ]
 
 export function InterestForm() {
+    const id = useId()
     const [currentQuestion, setCurrentQuestion] = useState(0)
     const [answers, setAnswers] = useState<Record<string, string>>({})
     const [submitted, setSubmitted] = useState(false)
@@ -103,6 +128,13 @@ export function InterestForm() {
 
     const next = () => {
         if (!selectedAnswer) return
+        if (
+            question.id === 'content' &&
+            selectedAnswer === 'other' &&
+            !answers.contentOther?.trim()
+        ) {
+            return
+        }
 
         if (currentQuestion === questions.length - 1) {
             setSubmitted(true)
@@ -219,50 +251,92 @@ export function InterestForm() {
                         required
                     />
                 ) : (
-                    <div className="mt-6 space-y-3">
+                    <RadioGroup
+                        value={selectedAnswer ?? ''}
+                        onValueChange={(value) => selectAnswer(value ?? '')}
+                        className="mt-6 gap-3"
+                    >
                         {question.options.map((option) => {
                             const Icon = 'icon' in option ? option.icon : null
 
                             const isSelected = selectedAnswer === option.value
+                            const itemId = `${id}-${question.id}-${option.value}`
 
                             return (
-                                <motion.button
+                                <Label
                                     key={option.value}
-                                    type="button"
-                                    onClick={() => selectAnswer(option.value)}
-                                    whileTap={{ scale: 0.98 }}
-                                    className={`flex w-full items-center gap-3 rounded-xl border p-4 text-left transition-colors ${
+                                    htmlFor={itemId}
+                                    className={cn(
+                                        'flex w-full cursor-pointer items-center gap-3 rounded-xl border p-4 text-left transition-colors',
                                         isSelected
-                                            ? 'border-foreground bg-muted'
-                                            : 'hover:bg-muted/50'
-                                    }`}
+                                            ? 'border-primary bg-primary/5'
+                                            : 'border-input hover:bg-muted/50',
+                                    )}
                                 >
+                                    <span className="relative flex size-5 shrink-0 items-center justify-center">
+                                        <RadioGroupItem
+                                            id={itemId}
+                                            value={option.value}
+                                            className="size-5 data-checked:bg-transparent! **:data-[slot=radio-group-indicator]:hidden"
+                                        />
+                                        {isSelected && (
+                                            <motion.span
+                                                layoutId={`${id}-${question.id}-indicator`}
+                                                className="pointer-events-none absolute inset-1 rounded-full bg-primary"
+                                                transition={{
+                                                    type: 'spring',
+                                                    bounce: 0.25,
+                                                    duration: 0.45,
+                                                }}
+                                            />
+                                        )}
+                                    </span>
+
                                     {Icon && (
-                                        <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg border bg-background">
+                                        <motion.span
+                                            animate={{
+                                                x: isSelected ? [0, 4, 0] : 0,
+                                            }}
+                                            transition={{
+                                                duration: 0.3,
+                                                ease: 'easeOut',
+                                            }}
+                                            className={cn(
+                                                'flex size-8 shrink-0 items-center justify-center rounded-md',
+                                                isSelected
+                                                    ? 'bg-primary/10 text-primary'
+                                                    : 'bg-foreground/10 text-muted-foreground',
+                                            )}
+                                        >
                                             <Icon
-                                                className="h-4 w-4"
+                                                className="size-4"
                                                 size={14}
                                             />
-                                        </div>
+                                        </motion.span>
                                     )}
 
                                     <span className="flex-1 text-sm font-medium">
                                         {option.label}
                                     </span>
-
-                                    <div
-                                        className={`flex h-5 w-5 items-center justify-center rounded-full border ${
-                                            isSelected
-                                                ? 'border-foreground bg-foreground text-background'
-                                                : 'border-muted-foreground/30'
-                                        }`}
-                                    >
-                                        {isSelected && <CheckIcon size={13} />}
-                                    </div>
-                                </motion.button>
+                                </Label>
                             )
                         })}
-                    </div>
+                        {question.id === 'content' &&
+                            selectedAnswer === 'other' && (
+                                <Input
+                                    value={answers.contentOther ?? ''}
+                                    onChange={(event) =>
+                                        setAnswers((prev) => ({
+                                            ...prev,
+                                            contentOther: event.target.value,
+                                        }))
+                                    }
+                                    placeholder="Tell us what you would like to learn"
+                                    className="h-12 rounded-xl"
+                                    required
+                                />
+                            )}
+                    </RadioGroup>
                 )}
             </motion.div>
 

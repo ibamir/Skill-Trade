@@ -3,6 +3,7 @@
 import { cn } from '@/lib/utils'
 import { scrollToHash } from '@/lib/utils'
 import { useScroll } from '@/hooks/use-scroll'
+import { useEffect } from 'react'
 import { MobileNav } from './mobile-nav'
 import { ThemeToggle } from '@/components/theme/theme-toggle'
 import { motion } from 'motion/react'
@@ -19,6 +20,16 @@ export const links = [
 export function Header() {
     const scrolled = useScroll(10)
     const { theme } = useTheme()
+
+    useEffect(() => {
+        const previousRestoration = window.history.scrollRestoration
+        window.history.scrollRestoration = 'manual'
+        window.scrollTo(0, 0)
+
+        return () => {
+            window.history.scrollRestoration = previousRestoration
+        }
+    }, [])
 
     return (
         <motion.div
