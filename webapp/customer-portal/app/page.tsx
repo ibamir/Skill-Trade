@@ -10,7 +10,7 @@ import Newsletter from '@/components/Home/newsletter'
 export default function Home() {
     return (
         <div
-            className="w-full h-full bg-background flex flex-col items-center justify-center gap-8"
+            className="w-full h-full bg-background flex flex-col items-center justify-center gap-8 px-4"
             id="home"
         >
             <Header />
