@@ -13,23 +13,23 @@ import {
 const faqs = [
     {
         icon: GraduationCap,
-        question: 'What exactly is Skill Trade?',
-        answer: 'Skill Trade is a learning platform where people discover useful skills, learn from creators, and share what they know.',
+        question: 'What exactly is Talented?',
+        answer: 'Talented is a learning platform where people discover useful skills, learn from creators, and share what they know.',
     },
     {
         icon: Users,
-        question: 'Who can use Skill Trade?',
+        question: 'Who can use Talented?',
         answer: 'Anyone. Students can find study resources, learners can develop practical digital skills, and creators or top students can turn their knowledge into an income.',
     },
     {
         icon: CreditCard,
         question: 'How do I pay without an international card?',
-        answer: 'No more asking a friend abroad to pay or facing a declined foreign card. When Skill Trade launches, you will be able to pay in TND through local options such as D17 and Flouci.',
+        answer: 'No more asking a friend abroad to pay or facing a declined foreign card. When Talented launches, you will be able to pay in TND through local options such as D17 and Flouci.',
     },
     {
         icon: WalletCards,
-        question: 'Can I really make money on Skill Trade?',
-        answer: 'When Skill Trade launches, creators and top students will be able to upload content, set their own prices, and earn when others purchase it. Earnings can be withdrawn to D17 or Flouci.',
+        question: 'Can I really make money on Talented?',
+        answer: 'When Talented launches, creators and top students will be able to upload content, set their own prices, and earn when others purchase it. Earnings can be withdrawn to D17 or Flouci.',
     },
     {
         icon: ShieldCheck,
@@ -39,7 +39,7 @@ const faqs = [
     {
         icon: Rocket,
         question: 'When is the official launch?',
-        answer: 'Skill Trade is preparing for launch and onboarding its first creators and tutors. Join the beta to get notified when the platform opens.',
+        answer: 'Talented is preparing for launch and onboarding its first creators and tutors. Join the beta to get notified when the platform opens.',
     },
 ]
 
@@ -106,7 +106,7 @@ export default function FrequentAskedQuestions() {
                     className="mt-5 text-lg text-muted-foreground"
                 >
                     Everything you need to know about learning, sharing, and
-                    earning on Skill Trade.
+                    earning on Talented.
                 </motion.p>
             </motion.div>
 

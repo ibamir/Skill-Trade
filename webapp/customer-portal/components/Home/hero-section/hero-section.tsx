@@ -165,10 +165,7 @@ export function Cards() {
 
 export default function HeroSection() {
     return (
-        <div
-            className="w-full flex flex-col items-center justify-center gap-8 p-4 pb-32"
-            
-        >
+        <div className="w-full flex flex-col items-center justify-center gap-8 p-4 pb-32">
             <div className="min-h-20" />
             {/* Header */}
             <motion.h1
@@ -190,7 +187,7 @@ export default function HeroSection() {
                 viewport={{ once: false, amount: 0.6 }}
                 transition={{ duration: 0.5, delay: 0.1, ease: 'easeOut' }}
             >
-                Skill Trade is preparing to connect Tunisian learners with
+                Talented is preparing to connect Tunisian learners with
                 practical courses, guides, and creators. Learn, share, and sell{' '}
                 <span className="font-semibold text-primary">
                     D17 &amp; Flouci
@@ -212,11 +209,11 @@ export default function HeroSection() {
                     className="bg-primary capitalize font-extrabold"
                     onClick={() =>
                         document
-                            .getElementById('interested')
+                            .getElementById('help-us')
                             ?.scrollIntoView({ behavior: 'smooth' })
                     }
                 >
-                    Join the beta
+                    Take the survey
                 </ExpandingArrowButton>
             </motion.div>
 

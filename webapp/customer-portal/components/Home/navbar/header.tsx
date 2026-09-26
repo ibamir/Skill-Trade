@@ -13,7 +13,7 @@ export const links = [
     { label: 'Features', href: '#features' },
     { label: 'How it works', href: '#how-it-works' },
     { label: 'FAQ', href: '#faq' },
-    { label: 'Updates', href: '#interested' },
+    // { label: 'Updates', href: '#interested' },
     { label: 'Take the survey', href: '#help-us' },
 ]
 
@@ -60,8 +60,8 @@ export function Header() {
                     <span className="flex items-center justify-center min-w-fit gap-0.5">
                         <img
                             src={theme === 'dark' ? '/dark.svg' : '/light.svg'}
-                            alt="Skill Trade"
-                            className="w-20 max-h-fit"
+                            alt="Talented"
+                            className="w-30 max-h-fit"
                         />
                     </span>
                 </a>
