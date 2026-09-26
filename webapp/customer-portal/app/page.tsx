@@ -19,7 +19,7 @@ export default function Home() {
             <HowItWorks />
             <FrequentAskedQuestions />
             <InterestFormSection />
-            <Newsletter />
+            {/* <Newsletter /> */}
             <Footer />
         </div>
     )

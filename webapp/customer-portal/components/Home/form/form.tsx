@@ -12,6 +12,7 @@ import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
 import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group'
 import { cn } from '@/lib/utils'
+import { saveToNotion } from '@/app/actions/notion/route'
 
 const questions = [
     {
@@ -37,7 +38,7 @@ const questions = [
     },
     {
         id: 'interest',
-        question: 'What would you use Skill Trade for?',
+        question: 'What would you use Talented for?',
         options: [
             {
                 value: 'learn',
@@ -81,7 +82,7 @@ const questions = [
     },
     {
         id: 'likelihood',
-        question: 'Would you use Skill Trade if it launched today?',
+        question: 'Would you use Talented if it launched today?',
         options: [
             {
                 value: 'definitely',
@@ -114,6 +115,7 @@ export function InterestForm() {
     const [currentQuestion, setCurrentQuestion] = useState(0)
     const [answers, setAnswers] = useState<Record<string, string>>({})
     const [submitted, setSubmitted] = useState(false)
+    const [isSubmitting, setIsSubmitting] = useState(false)
 
     const question = questions[currentQuestion]
     const selectedAnswer = answers[question.id]
@@ -126,7 +128,7 @@ export function InterestForm() {
         }))
     }
 
-    const next = () => {
+    const next = async () => {
         if (!selectedAnswer) return
         if (
             question.id === 'content' &&
@@ -136,18 +138,35 @@ export function InterestForm() {
             return
         }
 
+        // 1. Check if the user is submitting the very last question
         if (currentQuestion === questions.length - 1) {
-            setSubmitted(true)
+            setIsSubmitting(true)
 
-            // Send `answers` to your backend here.
-            console.log('Interest form:', {
+            // 2. Combine previous answers with the final question's answer
+            const completeData = {
                 ...answers,
                 [question.id]: selectedAnswer,
-            })
+            }
+
+            try {
+                // 3. Send all compiled data to Notion in one single batch
+                const response = await saveToNotion(completeData)
+                if (response.success) {
+                    setSubmitted(true)
+                } else {
+                    alert('Something went wrong. Please try again.')
+                }
+            } catch (err) {
+                console.error(err)
+                alert('Connection error. Please check your network.')
+            } finally {
+                setIsSubmitting(false)
+            }
 
             return
         }
 
+        // Move to the next question if it's not the end
         setCurrentQuestion((prev) => prev + 1)
     }
 
@@ -174,7 +193,7 @@ export function InterestForm() {
 
                 <p className="mt-2 max-w-md text-sm text-muted-foreground">
                     Your answers help us build the right courses, resources, and
-                    creator tools for the Skill Trade community.
+                    creator tools for the Talented community.
                 </p>
             </motion.div>
         )
@@ -392,7 +411,7 @@ export function InterestFormSection() {
                     Quick community survey
                 </span>
                 <h2 className="text-4xl font-bold tracking-tight sm:text-5xl">
-                    Help shape Skill Trade.
+                    Help shape Talented.
                 </h2>
                 <p className="mt-5 text-lg text-muted-foreground">
                     Answer a few quick questions about what you want to learn,

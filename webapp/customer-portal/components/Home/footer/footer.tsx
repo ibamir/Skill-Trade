@@ -28,8 +28,8 @@ export default function Footer() {
                                         ? '/dark.svg'
                                         : '/light.svg'
                                 }
-                                alt="Skill Trade"
-                                className="w-20"
+                                alt="Talented"
+                                className="w-25"
                             />
                         </span>
                     </a>
@@ -54,9 +54,9 @@ export default function Footer() {
             </div>
             <Separator className="w-full h-px bg-border" />
             <p className="text-center">
-                &copy; 2026 Skill Trade Inc. All rights reserved.
+                &copy; 2026 Talented Inc. All rights reserved.
             </p>
-            <WordmarkFooter brandName="SKILL TRADE" />
+            <WordmarkFooter brandName="TALENTED" />
         </motion.div>
     )
 }

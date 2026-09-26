@@ -9,9 +9,9 @@ const PlusJakartaSans = Plus_Jakarta_Sans({
 })
 
 export const metadata: Metadata = {
-    title: 'Skill Trade | Learn any skill',
+    title: 'Talented | Learn any skill',
     description:
-        'Learn practical skills, share what you know, and discover creators on Skill Trade.',
+        'Learn practical skills, share what you know, and discover creators on Talented.',
 }
 
 export default function RootLayout({ children }: LayoutProps<'/'>) {

@@ -28,7 +28,7 @@ const steps: Step[] = [
         number: '01',
         title: 'Find the right skill to learn',
         description:
-            'When Skill Trade launches, explore practical courses, guides, and live cohorts in Darija, French, and English. Choose resources that match your goals and your level.',
+            'When Talented launches, explore practical courses, guides, and live cohorts in Darija, French, and English. Choose resources that match your goals and your level.',
         card: <FigmaWebFlow />,
         tags: ['Freelance Contracts', 'Figma & Webflow', 'Next.js & SaaS'],
     },
